@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-list</title>
+    <style>
+            header{
+                text-align: center;
+                color: black;
+            }
+            * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            }
+
+            body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            min-height: 100vh;
+            background-image: url('image1.jpeg');
+            background-size: 500px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            border-image-width: auto;
+            }
+
+            .todo-card {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 400px;
+            }
+
+            .todo-card h2 {
+            margin-bottom: 16px;
+            text-align: center;
+            color: #333;
+            }
+
+            .input-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            }
+
+            input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            }
+
+            input:focus {
+            border-color: #4CAF50;
+            }
+
+            #add-btn {
+            padding: 10px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            }
+
+            #add-btn:hover {
+            background-color: #45a049;
+            }
+
+            ul {
+            list-style: none;
+            }
+
+            li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            }
+
+            li:hover {
+            background: #f1f1f1;
+            }
+            .completed {
+            text-decoration: line-through;
+            color: #888888;
+            }
+
+            .delete-btn:hover {
+            background: #e04848;
+            }
+    </style>
+</head>
+<body>
+    <section id="to-do-card">
+         <header><h1>to-do-list</h1></header>
+        <div class="input" >
+            <input type="text" id="task" placeholder="enter your task">
+            <button id="add_task">add task</button>
+        </div>
+        <ul id="list"></ul>
+    </section>
+    
+
+    
+</body>
+<script>
+    let task=document.getElementById("task");
+    let add_task=document.getElementById("add_task");
+    let list=document.getElementById("list");
+
+    function add(){
+        let text_task=task.value.trim();
+
+        if (text_task===""){
+            alert("please enter text")
+            return;
+        }
+       let li=document.createElement("li");
+    li.textContent=text_task;
+    
+    li.addEventListener("click" , function(){
+        li.classList.toggle("completed");
+
+    });
+    list.appendChild(li);
+    task.value="";
+
+    add_task.addEventListener("click" , add);
+};
+     
+    task.addEventListener("keydown" , function(event){
+        if(event.key==="Enter"){
+            add();
+        }
+    })
+
+</script>
+</html>
